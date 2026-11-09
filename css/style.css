@@ -75,6 +75,9 @@ button {
   display: none;
   flex-direction: column;
   min-height: 100vh;
+  /* 100vh 在手机上是「地址栏收起」时的高度，比可视区高出一截，
+     短页面因此多出一段可滚动的空白，滑到底会弹回去。用 dvh 跟着可视区走。 */
+  min-height: 100dvh;
   position: relative;
   padding-bottom: 60px; /* 给固定 tabbar 留出空间 */
 }
