@@ -53,6 +53,7 @@
 }
 
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: var(--sans);
@@ -74,10 +75,10 @@ button {
 .page {
   display: none;
   flex-direction: column;
-  min-height: 100vh;
-  /* 100vh 在手机上是「地址栏收起」时的高度，比可视区高出一截，
-     短页面因此多出一段可滚动的空白，滑到底会弹回去。用 dvh 跟着可视区走。 */
-  min-height: 100dvh;
+  /* 高度跟 body 的 100%（可视区）走，而不是 100vh。
+     100vh 是地址栏收起时的高度，短页面会多出一段可滚动的空白，滑到底会弹回去；
+     dvh 在老旧内核（如部分国产浏览器）不生效，所以统一用百分比。 */
+  min-height: 100%;
   position: relative;
   padding-bottom: 60px; /* 给固定 tabbar 留出空间 */
 }
