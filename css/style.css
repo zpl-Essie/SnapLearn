@@ -209,8 +209,8 @@ button {
   padding: 6px 2px;
   color: var(--ink-3);
   font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   text-decoration: underline;
   text-decoration-color: var(--line);
   text-underline-offset: 4px;
