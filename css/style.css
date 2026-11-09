@@ -201,23 +201,23 @@ button {
   letter-spacing: 0.06em;
 }
 
-/* ---------- 免 key 演示入口（右下角文字链） ---------- */
+/* ---------- 免 key 演示入口（右下角淡紫胶囊） ---------- */
 .demo-link {
   position: absolute;
   right: 20px;
-  bottom: 6px;
-  padding: 6px 2px;
-  color: var(--ink-3);
+  bottom: 4px;
+  padding: 4px 12px;
+  background: var(--lilac);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  color: var(--ink);
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.08em;
-  text-decoration: underline;
-  text-decoration-color: var(--line);
-  text-underline-offset: 4px;
-  transition: color 0.15s;
+  transition: transform 0.15s;
 }
 .demo-link:active {
-  color: var(--ink);
+  transform: scale(0.96);
 }
 
 /* 结果页顶栏的演示徽标 */
