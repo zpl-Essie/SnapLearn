@@ -132,6 +132,7 @@ button {
 
 /* ---------- 首页 ---------- */
 .home {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -200,58 +201,23 @@ button {
   letter-spacing: 0.06em;
 }
 
-/* ---------- 免 key 演示入口 ---------- */
-.demo-entry {
-  margin-top: 32px;
-  width: min(320px, 100%);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  text-align: left;
-  background: rgba(217, 209, 239, 0.28);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  box-shadow: none;
-  transition: transform 0.15s, background 0.15s;
-}
-.demo-entry:active {
-  transform: scale(0.985);
-  background: rgba(217, 209, 239, 0.45);
-}
-.demo-entry__badge {
-  flex: 0 0 auto;
+/* ---------- 免 key 演示入口（右下角文字链） ---------- */
+.demo-link {
+  position: absolute;
+  right: 20px;
+  bottom: 6px;
+  padding: 6px 2px;
+  color: var(--ink-3);
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  background: transparent;
-  color: var(--ink-2);
-  border: 1px solid var(--line);
-  padding: 3px 5px;
-  border-radius: 3px;
-}
-.demo-entry__main {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.demo-entry__title {
-  font-family: var(--serif);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-.demo-entry__sub {
   font-size: 11px;
-  color: var(--ink-2);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+  transition: color 0.15s;
 }
-.demo-entry__arrow {
-  font-family: var(--mono);
-  font-size: 14px;
-  color: var(--ink-2);
+.demo-link:active {
+  color: var(--ink);
 }
 
 /* 结果页顶栏的演示徽标 */
@@ -276,7 +242,6 @@ button {
   .home__sub { margin-bottom: 32px; }
   .camera-btn { width: 148px; height: 148px; font-size: 18px; }
   .album-btn { margin-top: 20px; }
-  .demo-entry { margin-top: 24px; }
   .home__tip { margin-top: 20px; }
 }
 
