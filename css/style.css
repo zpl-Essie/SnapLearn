@@ -77,8 +77,10 @@ button {
   flex-direction: column;
   /* 高度跟 body 的 100%（可视区）走，而不是 100vh。
      100vh 是地址栏收起时的高度，短页面会多出一段可滚动的空白，滑到底会弹回去；
-     dvh 在老旧内核（如部分国产浏览器）不生效，所以统一用百分比。 */
+     dvh 在老旧内核（如部分国产浏览器）不生效，所以统一用百分比。
+     页面固定为可视高度，滚动交给内部内容区，避免整页滚动被地址栏收放带偏。 */
   min-height: 100%;
+  height: 100%;
   position: relative;
   padding-bottom: 60px; /* 给固定 tabbar 留出空间 */
 }
@@ -86,12 +88,8 @@ button {
   display: flex;
 }
 
-/* 生词本 / 设置：页面本身不滚动，改成内容区内部滚动。
+/* 页面本身不滚动，滚动交给各自的内部内容区（.home / .result / .vocab / .settings）。
    整页滚动时，地址栏收起/展开会改变可视高度，滑到底容易出现整页回弹、底部露白。 */
-#page-vocab,
-#page-settings {
-  height: 100%;
-}
 #page-settings .settings {
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -156,6 +154,7 @@ button {
   justify-content: center;
   padding: 40px 24px;
   text-align: center;
+  overflow-y: auto; /* 极矮屏（横屏/小屏）内容超出时可滚动，不被裁掉 */
 }
 .home__title {
   font-family: var(--serif);
@@ -301,6 +300,10 @@ button {
   padding: 16px;
   /* 底部 actionbar(~76px) + tabbar(~50px) + 安全区 */
   padding-bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+  /* 结果页内容较长，滚动发生在这里，页面本身固定不动 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 .photo-wrap {
   position: relative;
