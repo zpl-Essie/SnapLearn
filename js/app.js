@@ -1833,8 +1833,19 @@
 
   // ---------- PWA：Service Worker 注册 ----------
   if ('serviceWorker' in navigator) {
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloading = false;
+    // 新版本接管后自动刷新一次，避免一直拿旧缓存
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloading) return;
+      reloading = true;
+      location.reload();
+    });
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js').catch((e) => console.warn('SW 注册失败', e));
+      navigator.serviceWorker
+        .register('sw.js', { updateViaCache: 'none' })
+        .then((reg) => reg.update())
+        .catch((e) => console.warn('SW 注册失败', e));
     });
   }
 })();
