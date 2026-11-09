@@ -1,7 +1,7 @@
 // 拍拍学 · Service Worker
 // 缓存策略：Stale-While-Revalidate（先返回缓存，后台更新）
 
-const CACHE = 'words-v20261109DEMO3';
+const CACHE = 'words-v20261109DEMO4';
 const ASSETS = [
   './',
   'index.html',
@@ -43,7 +43,7 @@ self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
 
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then((cached) => {
+    caches.match(e.request).then((cached) => {
       const fetchPromise = fetch(e.request)
         .then((res) => {
           // 只缓存成功的 GET
